@@ -1,10 +1,5 @@
 streamlit
 pandas
 scapy
-logging
-warnings
-time
-io
-random
 networkx
 matplotlib
