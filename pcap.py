@@ -9,7 +9,6 @@ import random
 from protocols import protocols
 import networkx as nx
 import matplotlib.pyplot as plt
-import base64
 #import matplotlib.patches as patches
 #from matplotlib.patches import FancyArrowPatch
 
@@ -152,7 +151,7 @@ def drawNtwkMap(uniqueDataDF):
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        imageDLFormat = st.selectbox("Select desired download format:", ["PNG", "JPG"])
+        imageDLFormat = st.selectbox("Select desired image format:", ["PNG", "JPG"])
     with col2:
         ""
     with col3:
@@ -176,6 +175,7 @@ def main():
     st.subheader("PCAP Data Extraction Utility")
 
     fileUpl = st.file_uploader("Upload a packet capture file (PCAP or PCAPNG) to conduct an analysis.", type=["pcap", "pcapng"])
+    st.caption("Note - This utility does not save your data. All files uploaded are stored in memory at runtime and dropped upon leaving the webpage. This utility does not have a database and does not track users or files uploaded or any IP addresses within packet capture files.")
 
     if fileUpl is not None:
         st.divider()
@@ -202,6 +202,10 @@ def main():
         #columns = len(detailAnalysisDF.columns)
         #width = columns * 100
         st.dataframe(detailAnalysisDF,hide_index=True)
+        
+        detailACSV = detailAnalysisDF.to_csv(index=False)
+        
+        st.download_button(label="Download as CSV", data=detailACSV, file_name='pcap_'+timeStrSmpl+'.csv', mime='text/csv')
 
         #### Don't want to require manual interaction. Auto-draw map on upload
         #if st.button("Show Network Map"): 
@@ -218,6 +222,9 @@ def main():
         unsafe_allow_html=True
         )
         #st.dataframe(flowDataDF,hide_index=True)
+        
+        
+        
 
 if __name__ == '__main__':
     main()
