@@ -14,7 +14,9 @@ Simply upload a .pcap or .pcapng file, and the utility will handle the rest. Thi
 The libraries used to run the utility are in requirements.txt. Install these in your Python virtual environment by running:
 + pip install -r requirements.txt
 
-If you encounter build errors, it's likely related to Matplotlib, and a dependency it has (freetype). Matplotlib requires Microsoft Visual C++ 14.0 or greater to be installed on the Windows machine running it. Get it with "Microsoft C++ Build Tools": https://visualstudio.microsoft.com/visual-cpp-build-tools/. This cannot be pushed over pip or other Python package managers.
+If you encounter build errors, it's likely related to Matplotlib, and a dependency it has (freetype). Matplotlib requires Microsoft Visual C++ 14.0 or greater to be installed on the Windows machine running it. 
+Get it with "Microsoft C++ Build Tools": 
+https://visualstudio.microsoft.com/visual-cpp-build-tools/. This cannot be pushed over pip or other Python package managers.
 
 ### Running the Tool
 Since the tool is built on Streamlit, simply run:
