@@ -47,7 +47,7 @@ font-size: 15px;
 }
 </style>
 <div class="footer">
-<a style='display: block; text-align: center;' href="https://mikemooney.org" target="_blank">Michael Mooney Software</a>
+<a style='display: block; text-align: center;' href="https://github.com/kineticquant/wireshark-PCAP-Mapper" target="_blank">Kineticquant</a>
 </div>
 """
 st.markdown(footer,unsafe_allow_html=True)
