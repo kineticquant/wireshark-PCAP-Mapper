@@ -10,4 +10,16 @@ Written in Python and using Streamlit, this is a lightweight, rapid-analysis uti
 
 Simply upload a .pcap or .pcapng file, and the utility will handle the rest. This makes troubleshooting connections or searching for malicious actors from a packet capture much easier than digging through the packet capture itself.
 
+### Dependencies
+The libraries used to run the utility are in requirements.txt. Install these in your Python virtual environment by running:
++ pip install -r requirements.txt
+
+### Running the Tool
+Since the tool is built on Streamlit, simply run:
++ streamlit run pcap.py
++ This will launch the web page for it automatically.
+
+### Protocol Mapping
+The dictionary for protocols corresponding to Wireshark's numerical labels for them is defined in protocols.py. If any protocols are added in Wireshark in the future, just add them to the dictionary to be defined. The tool won't fail if a protocol isn't defined in the dictionary, but it may display the numerical value from Wireshark for it (ex: 133 is UDPLite in Wireshark).
+
 ### Preview
