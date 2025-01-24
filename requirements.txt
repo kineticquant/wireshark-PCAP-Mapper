@@ -2,4 +2,10 @@ streamlit
 pandas
 scapy
 networkx
-matplotlib
+# matplotlib
+pip install matplotlib==3.5.1  # downgraded to 3.5.1 due to DDL issues with freetype
+# streamlit uses pillow
+Pillow
+# matplotlib uses freetype, have seen DDL issues with this missing randomly
+# depends on Python version
+freetype.py
