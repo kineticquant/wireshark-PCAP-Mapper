@@ -32,3 +32,4 @@ The dictionary for protocols corresponding to Wireshark's numerical labels for t
 
 
 ### Preview
+Note: IP's not visible in screenshots below by design.
