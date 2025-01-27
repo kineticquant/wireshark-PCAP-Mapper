@@ -9,7 +9,7 @@ Also uses:
 ### About
 Written in Python and using Streamlit, this is a lightweight, rapid-analysis utility designed to read and parse packet capture (*.pcap, or *.pcapng) files from Wireshark or a similar utility, and subsequently maps the network connections out in a visible network graph. The utility also provides a Pandas Dataframe as an export of the packet capture, which can be downloaded as an Excel file for further analysis.
 
-Simply upload a .pcap or .pcapng file, and the utility will handle the rest. This makes troubleshooting connections or searching for malicious actors from a packet capture much easier than digging through the packet capture itself.
+Simply upload a .pcap or .pcapng file, and the utility will handle the rest. This makes troubleshooting connections or searching for malicious actors from a packet capture much easier than digging through the packet capture itself. Note that this utility is not connected to any database or store. It won't save the packet capture details anywhere, other than in memory, which is by design for security.
 
 
 ### Dependencies
