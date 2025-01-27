@@ -25,7 +25,7 @@ https://visualstudio.microsoft.com/visual-cpp-build-tools/. This cannot be pushe
 Since the tool is built on Streamlit, simply run:
 + streamlit run pcap.py
 + This will launch the web page for it automatically.
-+ Upload uploading your pcap or pcapng file(s), the tool will automatically run, and you'll receive 2 toast messages if everything ran correctly.
++ Upon uploading your pcap or pcapng file(s), the tool will automatically run, and you'll receive 2 toast messages if everything ran correctly.
 
 
 ### Protocol Mapping
