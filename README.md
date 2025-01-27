@@ -7,7 +7,7 @@ Also uses:
 
 
 ### About
-Written in Python and using Streamlit, this is a lightweight, rapid-analysis utility designed to read and parse packet capture (*.pcap, or *.pcapng) files from Wireshark or a similar utility, and subsequently maps the network connections out in a visible network graph. The utility also provides a Pandas Dataframe as an export of the packet capture, which can be downloaded as an Excel file for further analysis.
+Written in Python and using Streamlit, this is a lightweight, rapid-analysis utility designed to read and parse packet capture (*.pcap, or *.pcapng) files from Wireshark or a similar utility, and subsequently maps the network connections out in a visible network graph. The utility also provides a Pandas Dataframe as an export of the packet capture, which can be downloaded as a CSV file for further analysis.
 
 Simply upload a .pcap or .pcapng file, and the utility will handle the rest. This makes troubleshooting connections or searching for malicious actors from a packet capture much easier than digging through the packet capture itself. Note that this utility is not connected to any database or store. It won't save the packet capture details anywhere, other than in memory, which is by design for security.
 
@@ -25,6 +25,7 @@ https://visualstudio.microsoft.com/visual-cpp-build-tools/. This cannot be pushe
 Since the tool is built on Streamlit, simply run:
 + streamlit run pcap.py
 + This will launch the web page for it automatically.
++ Upload uploading your pcap or pcapng file(s), the tool will automatically run, and you'll receive 2 toast messages if everything ran correctly.
 
 
 ### Protocol Mapping
@@ -32,4 +33,8 @@ The dictionary for protocols corresponding to Wireshark's numerical labels for t
 
 
 ### Preview
-Note: IP's not visible in screenshots below by design.
+_Note: IP's not visible in screenshots below by design. Please run independent tests on your own network(s) to view data._
+![Base Utility](https://github.com/user-attachments/assets/bb27c35f-de92-4db6-8cf8-ce626e3251bb)
+![Upload_Success_obf](https://github.com/user-attachments/assets/992090d8-6707-4a3e-84ac-5714bbbd8ebf)
+![Network_obf](https://github.com/user-attachments/assets/b2aec340-1ec3-4492-9cf1-9870c6965482)
+![Occurences_obf](https://github.com/user-attachments/assets/89e20375-4e46-411f-b5bd-e2b32f5033a1)
