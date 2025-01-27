@@ -160,7 +160,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-
-#### Oracle exports will be created in oracle/exports
-#### ignore them as they are data csv exports
-oracle/exports/*.csv
+# dev testing
+temp.pcap
+temp.pcapng
+network_plot.*
