@@ -82,7 +82,6 @@ def extrPCAPData(pcapFile):
 def extrIPsFlows(pcapFile):
     packets = rdpcap(pcapFile)
     
-    # Store flows
     flows = {}
 
     for packet in packets:
@@ -92,7 +91,6 @@ def extrIPsFlows(pcapFile):
             
             flow = f"{srcIP}->{dstIP}"
 
-            # Check if flow already exists in the dictionary
             if flow in flows:
                 flows[flow] += 1
             else:
@@ -111,7 +109,7 @@ def drawNtwkMap(uniqueDataDF):
     st.divider()
     st.caption("Click the expand button in the top right of the image to view in full-screen.")
     
-    st.set_option('deprecation.showPyplotGlobalUse', False)
+    # st.set_option('deprecation.showPyplotGlobalUse', False)
 
     G = nx.DiGraph()
 
@@ -122,8 +120,9 @@ def drawNtwkMap(uniqueDataDF):
 
         G.add_edge(source, destination, color=edge_color)
 
-    plt.figure(figsize=(10, 14))
-
+    # have to now pass the arg since new version of Streamlit depracated showPyplotGlobalUse
+    # plt.figure(figsize=(10, 14))
+    fig, ax = plt.subplots(figsize=(10, 14))
     pos = nx.spring_layout(G, k=1.5)
     maxPopSrc = uniqueDataDF['Source'].mode().values[0]
     
@@ -138,15 +137,16 @@ def drawNtwkMap(uniqueDataDF):
             nodeBorderCol.append(random.choice(list(plt.cm.tab20.colors)))
             nodeFillCol.append('white')
 
-    # Ensure both lists have the same length otherwise dep
+    # ensure both lists have the same length otherwise dep
     maxNodeLength = max(len(nodeBorderCol), len(nodeFillCol))
     nodeBorderCol.extend(['gray'] * (maxNodeLength - len(nodeBorderCol)))
     nodeFillCol.extend(['white'] * (maxNodeLength - len(nodeFillCol)))
 
     nx.draw(G, pos, with_labels=True, node_size=8000, node_color=nodeFillCol, edgecolors=nodeBorderCol, linewidths=2, arrows=True, edge_color='gray')
 
-
-    plt.axis('off')
+    # continued Streamlit depracation change for showPyplotGlobalUse
+    # plt.axis('off')
+    ax.axis('off')
 
     col1, col2, col3 = st.columns(3)
 
@@ -162,7 +162,9 @@ def drawNtwkMap(uniqueDataDF):
     imgbtnLbl = "Download Image as " + imageDLFormat
     saveImg = st.download_button(label=imgbtnLbl, data=imageDLBytes(plt), file_name=f"network_plot_{timeStrSmpl}.{imageDLFormat.lower()}", mime=f"image/{imageDLFormat.lower()}")
 
-    st.pyplot()
+    # continued Streamlit depracation change for showPyplotGlobalUse
+    # st.pyplot()
+    st.pyplot(fig)
 
 def imageDLBytes(plot):
     buffer = io.BytesIO()
@@ -202,9 +204,7 @@ def main():
         #columns = len(detailAnalysisDF.columns)
         #width = columns * 100
         st.dataframe(detailAnalysisDF,hide_index=True)
-        
         detailACSV = detailAnalysisDF.to_csv(index=False)
-        
         st.download_button(label="Download as CSV", data=detailACSV, file_name='pcap_'+timeStrSmpl+'.csv', mime='text/csv')
 
         #### Don't want to require manual interaction. Auto-draw map on upload
@@ -214,7 +214,7 @@ def main():
         
         st.divider()
         
-         # Extract flows and display in a DataFrame
+         # extract flows and display in DF
         flowDataDF = extrIPsFlows("temp.pcap").sort_values(by="Occurrences", ascending=False)
         st.caption("Occurence analysis:")
         st.markdown(
@@ -222,8 +222,6 @@ def main():
         unsafe_allow_html=True
         )
         #st.dataframe(flowDataDF,hide_index=True)
-        
-        
         
 
 if __name__ == '__main__':
